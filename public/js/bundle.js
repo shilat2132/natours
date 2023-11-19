@@ -22,7 +22,7 @@
   var login = async (email, password) => {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/users/login",
+        "/api/users/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -31,7 +31,6 @@
       );
       const data = await response.json();
       if (data.status === "success") {
-        console.log(data);
         showAlert("success", "you logged in succesfuly");
         window.setTimeout(() => {
           location.assign("/");
@@ -45,7 +44,7 @@
   };
   var logout = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/users/logout");
+      const response = await fetch("/api/users/logout");
       const data = await response.json();
       if (data.status === "success")
         location.assign("/");
@@ -2180,7 +2179,7 @@
   // public/js/updateSettings.js
   var updateSettings = async (data, type) => {
     try {
-      const url = type === "password" ? "http://localhost:8000/api/users/updateMyPassword" : "http://localhost:8000/api/users/updateMe";
+      const url = type === "password" ? "/api/users/updateMyPassword" : "/api/users/updateMe";
       const res = await axios_default({
         method: "PATCH",
         url,
@@ -2215,7 +2214,6 @@
       form.append("name", document.getElementById("name").value);
       form.append("email", document.getElementById("email").value);
       form.append("photo", document.getElementById("photo").files[0]);
-      console.log(form);
       updateSettings(form, "data");
     });
   }
@@ -2224,7 +2222,6 @@
       e.preventDefault();
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-      console.log(email, password);
       login(email, password);
     });
   }

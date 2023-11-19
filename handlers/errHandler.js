@@ -24,7 +24,7 @@ const handleJWTExpiredError = () => new AppError('your token has expired, please
 
 //production and development errors
 const sendErrorDev = (err, req, res)=>{
-  console.log(err)
+  // console.log(err)
   if(req.originalUrl.startsWith('/api')){
     res.status(err.statusCode).json({
       status: err.status,
