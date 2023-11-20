@@ -11,6 +11,7 @@ const compression = require('compression')
 const cors = require('cors')
 
 
+
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./handlers/errHandler')
 const app = express();
@@ -70,6 +71,8 @@ app.use(
 );
 
 app.use(compression())
+
+
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
